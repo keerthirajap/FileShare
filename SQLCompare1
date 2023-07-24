@@ -1,0 +1,48 @@
+
+SELECT  table1.[CustId] CustIdExpected,
+	   table2.[CustId] CustIdActual,
+       CASE WHEN table1.[CustId] IS NULL THEN 1
+			WHEN table2.[CustId] IS NULL THEN 1
+			WHEN table1.[CustId] <> table2.[CustId] THEN 1
+			
+			ELSE 0
+		END as [IsCustIdMatching],
+
+      table1.[CustName] [CustNameExpected]
+	  ,table2.[CustName] [CustNameActual]
+      , CASE
+			WHEN table1.[CustName] <> table2.[CustName] THEN 1
+			
+			ELSE 0
+		END as [IsCustNameMatching]
+
+      ,table2.CustAddress [CustAddressExpected]
+	  ,table1.CustAddress [CustAddressActual]
+	    , CASE
+		WHEN table1.CustAddress <> table2.CustAddress THEN 1
+			
+		ELSE 0
+	END as [IsCustAddressMatching]
+
+      ,table2.CustPhone [CustPhoneExpected]
+	  ,table1.CustPhone [CustPhoneActual]
+	    , CASE
+		WHEN table1.CustPhone <> table2.CustPhone THEN 1
+			
+		ELSE 0
+	END as [IsCustPhoneMatching],
+	CASE
+		WHEN table1.[CustId] IS NULL THEN 1
+			WHEN table2.[CustId] IS NULL THEN 1
+				WHEN table1.[CustId] <> table2.[CustId] THEN 1
+					WHEN table1.[CustName] <> table2.[CustName] THEN 1
+					WHEN table1.CustAddress <> table2.CustAddress THEN 1
+					WHEN table1.CustPhone <> table2.CustPhone THEN 1
+		ELSE 0 
+		END as [IsRowMatching]
+
+
+FROM Original table1
+FULL OUTER JOIN Revised table2
+ON table1.CustId = table2.CustId
+order by  table1.CustId
