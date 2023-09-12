@@ -1,0 +1,43 @@
+Analyze this Employee csv data
+
+EEID,Full Name,Job Title,Department,Business Unit,Gender,Ethnicity,Age,Hire Date,Annual Salary,Bonus %,Country,City,Status,Code
+E02387,Emily Davis,Sr. Manger,IT,Research & Development,Female,Black,55,04-08-2016,"$141,604 ",15%,United States,Seattle,,
+E04105,Theodore Dinh,Technical Architect,IT,Manufacturing,Male,Asian,59,11/29/1997,"$99,975 ",0%,China,Chongqing,,
+E02572,Luna Sanders,Director,Finance,Speciality Products,Female,Caucasian,50,10/26/2006,"$163,099 ",20%,United States,Chicago,,
+E02832,Penelope Jordan,Computer Systems Manager,IT,Manufacturing,Female,Caucasian,26,9/27/2019,"$84,913 ",7%,United States,Chicago,,
+E01639,Austin Vo,Sr. Analyst,Finance,Manufacturing,Male,Asian,55,11/20/1995,"$95,409 ",0%,United States,Phoenix,,
+E00644,Joshua Gupta,Account Representative,Sales,Corporate,Male,Asian,57,1/24/2017,"$50,994 ",0%,China,Chongqing,,
+E01550,Ruby Barnes,Manager,IT,Corporate,Female,Caucasian,27,07-01-2020,"$119,746 ",10%,United States,Phoenix,,
+E04332,Luke Martin,Analyst,Finance,Manufacturing,Male,Black,25,5/16/2020,"$41,336 ",0%,United States,Miami,,
+E04533,Easton Bailey,Manager,Accounting,Manufacturing,Male,Caucasian,29,1/25/2019,"$113,527 ",6%,United States,Austin,,
+E03838,Madeline Walker,Sr. Analyst,Finance,Speciality Products,Female,Caucasian,34,6/13/2018,"$77,203 ",0%,United States,Chicago,,
+E00591,Savannah Ali,Sr. Manger,Human Resources,Manufacturing,Female,Asian,36,02-11-2009,"$157,333 ",15%,United States,Miami,,
+E03344,Camila Rogers,Controls Engineer,Engineering,Speciality Products,Female,Caucasian,27,10/21/2021,"$109,851 ",0%,United States,Seattle,,
+E00530,Eli Jones,Manager,Human Resources,Manufacturing,Male,Caucasian,59,3/14/1999,"$105,086 ",9%,United States,Austin,,
+E04239,Everleigh Ng,Sr. Manger,Finance,Research & Development,Female,Asian,51,06-10-2021,"$146,742 ",10%,China,Shanghai,,
+E03496,Robert Yang,Sr. Analyst,Accounting,Speciality Products,Male,Asian,31,11-04-2017,"$97,078 ",0%,United States,Austin,,
+E00549,Isabella Xi,Vice President,Marketing,Research & Development,Female,Asian,41,3/13/2013,"$249,270 ",30%,United States,Seattle,,
+E00163,Bella Powell,Director,Finance,Research & Development,Female,Black,65,03-04-2002,"$175,837 ",20%,United States,Phoenix,,
+E00884,Camila Silva,Sr. Manger,Marketing,Speciality Products,Female,Latino,64,12-01-2003,"$154,828 ",13%,United States,Seattle,,
+E04116,David Barnes,Director,IT,Corporate,Male,Caucasian,64,11-03-2013,"$186,503 ",24%,United States,Columbus,,
+
+Analyze this Rules csv data
+
+Order,Condition 1,Condition 2,Condition 3,Condition 4,Status,Code
+1,Gender = Female,Ethnicity = Black,Age > 45,"Annual Salary > $97,078 ",PASSED,A
+2,Gender = Female,Ethnicity = Caucasian,Age > 50,"Annual Salary > $100,000",FAILED,B
+3,Gender = Male,Ethnicity = Asian,Age < 51,"Annual Salary < $50,000",PASSED,A
+4,All Other,All Other,All Other,All Other,NIL,X
+
+
+For EEID E02387, Get me the Status and Code from Employee csv data based on the conditions in Rules csv data
+
+
+Output
+
+Based on the provided employee and rules data, let’s evaluate the status and code for the employee with EEID E02387.
+
+Employee E02387 is Emily Davis, a female who identifies as Black, is 55 years old, and has an annual salary of $141,604.
+
+Rule 1: This rule applies to female employees who identify as Black, are older than 45 years, and have an annual salary greater than $97,078. Since Emily Davis meets all these conditions, this rule applies to her. Therefore, her status is “PASSED” and the code is “A”.
+So, for EEID E02387 (Emily Davis), the Status is “PASSED” and the Code is “A”. Please note that once a rule is applied, subsequent rules are not checked. Therefore, only Rule 1 was considered in this case.
