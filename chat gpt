@@ -41,3 +41,36 @@ Employee E02387 is Emily Davis, a female who identifies as Black, is 55 years ol
 
 Rule 1: This rule applies to female employees who identify as Black, are older than 45 years, and have an annual salary greater than $97,078. Since Emily Davis meets all these conditions, this rule applies to her. Therefore, her status is “PASSED” and the code is “A”.
 So, for EEID E02387 (Emily Davis), the Status is “PASSED” and the Code is “A”. Please note that once a rule is applied, subsequent rules are not checked. Therefore, only Rule 1 was considered in this case.
+
+
+
+
+Get me the Status and Code from Employee csv data based on the conditions in Rules csv data for all Employee records
+
+Output should be EEID,Status,Code
+
+EEID       | Status | Code
+---------------------------
+E02387     | PASSED | A
+E04105     | NIL    | X
+E02572     | PASSED | A
+E02832     | PASSED | A
+E01639     | PASSED | A
+E00644     | NIL    | X
+E01550     | PASSED | A
+E04332     | NIL    | X
+E04533     | FAILED | B
+E03838     | PASSED | A
+E00591     | PASSED | A
+E03344     | PASSED | A
+E00530     | PASSED | A
+E04239     | PASSED | A
+E03496     | PASSED | A
+E00549     | PASSED | A
+E00163     | PASSED | A
+E00884     | PASSED | A
+E04116     | NIL    | X
+
+
+
+
