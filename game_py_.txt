@@ -1,0 +1,125 @@
+game_started = 0
+
+first_player = ""
+second_player = ""
+second_player_word_chances = 3
+second_player_position_chances = 2
+word_dict = dict()
+
+def start_game():    
+    reset_values()
+    choose_players()
+    create_word_list()
+    predict_words_from_second_player()    
+
+def reset_values():
+    global first_player
+    global second_player    
+    global word_dict          
+    global second_player_word_chances
+    global second_player_position_chances
+    first_player = ""
+    second_player = ""
+    word_dict.clear()      
+    second_player_word_chances = 3
+    second_player_position_chances = 2
+
+def choose_players():
+    global first_player
+    global second_player
+    chosen_player=int(input('Choose Player 1 or 2 = '))
+    if chosen_player == 1:
+       first_player = get_player_name(1)
+       second_player = get_player_name(2)
+    elif chosen_player == 2:
+        second_player = get_player_name(2)
+        first_player = get_player_name(1)
+    else:
+        print('Invalid Input, Please try again')
+        choose_players()
+
+def get_player_name(player):    
+    player_name=input('Enter the Player ' + str(player) +' name: ')
+    return player_name
+
+def create_word_list():
+    global word_dict
+    global first_player    
+    for item in range(1, 11):
+        is_valid_value = False
+
+        while True:        
+            if not is_valid_value:
+                get_input=input('Player 1 (' +  first_player + ') - Enter the word ' + str(item) + " : ")  
+                is_valid_value = validate_and_get_word_from_first_player(get_input)  
+                if is_valid_value:
+                    word_dict[item] = get_input          
+            else:
+                print('is_valid_value ' + str(item))
+                break
+
+def validate_and_get_word_from_first_player(value_to_check):
+    global word_dict
+
+    if any(value == value_to_check for value in word_dict.values()):
+        print('Your value '+ value_to_check +'already exists, please try again entering new word')
+        return False
+    elif all(map(lambda x: x.isalpha(), value_to_check)) == False:
+        print('Your value '+ value_to_check +'should have only characters a-z or A-Z')
+        return False
+    else:
+        return True
+
+def predict_words_from_second_player():
+    global word_dict
+    global second_player                
+    global second_player_word_chances
+
+    while True:
+
+        get_input_word=input('Player 2 (' +  second_player + ') - Guess the words of Player 1, Chances Remains ' + str(second_player_word_chances) + " : ")  
+
+        if any(value == get_input_word for value in word_dict.values()):              
+            print('Congrats! You predicted the word')  
+            predict_word_position_from_second_player(get_input_word)          
+            break
+        else:  
+            second_player_word_chances = second_player_word_chances - 1
+            print('Sorry! Please try again')
+
+        if second_player_word_chances == 0:
+            print('Sorry! You Player 2 lost the game')
+            break        
+
+def predict_word_position_from_second_player(word):
+    global word_dict
+    global second_player                
+    global second_player_position_chances
+
+    while True:
+
+        get_word_position=int(input('Player 2 (' +  second_player + ') - Guess the position of the word '+ word +' of Player 1, Chances Remains ' + str(second_player_position_chances) + " : "))  
+
+        if get_word_position == list(filter(lambda x: word_dict[x] == word, word_dict))[0]:  
+            print('Congrats! You predicted the word position')            
+            print('!! Player 2 Won Game !!')            
+            break
+        else:  
+            second_player_position_chances = second_player_position_chances - 1
+            print('Sorry! Please try again')
+
+        if second_player_position_chances == 0:
+            print('Sorry! You Player 2 lost the game')
+            break
+
+while True:      
+    if game_started == 0:
+        start_game()
+        game_started = 1    
+
+    get_input_id=input('Do you want to repeat the game? ')    
+    if get_input_id.lower() == "yes":
+        start_game()      
+    else:
+        print('Thank You')
+        break
